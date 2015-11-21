@@ -9,7 +9,7 @@ public class PluginFinder {
 		this.directory = directory;
 	}
 
-	public String[] accpetedPaths() {
+	public String[] acceptedFiles() {
 		return this.directory.list(this.filter);
 	}
 }
