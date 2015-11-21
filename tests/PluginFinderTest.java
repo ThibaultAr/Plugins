@@ -11,7 +11,7 @@ public class PluginFinderTest {
 	public void acceptedFilesTest() {
 		PluginFinder pluginFinder = new PluginFinder(new MockFile());
 		String[] acceptedFiles = pluginFinder.acceptedFiles();
-		String expectedFiles[] = {"hello.class", ".class"};
+		String expectedFiles[] = { "MockPlugin.class" };
 		Arrays.sort(expectedFiles);
 		Arrays.sort(acceptedFiles);
 		int nExpectedFiles = expectedFiles.length;
