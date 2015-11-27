@@ -1,6 +1,8 @@
+package plugins;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -8,14 +10,13 @@ import java.util.Set;
 
 import javax.swing.Timer;
 
-import plugins.PluginObserver;
 
 public class PluginFinder implements ActionListener {
 
 	protected PluginFilter filter = new PluginFilter();
 	protected File directory;
 	protected Set<String> plugins = new HashSet<String>();
-	protected List<? extends PluginObserver> observers;
+	protected List<PluginObserver> observers = new ArrayList<PluginObserver>();
 	protected Timer timer;
 
 	public PluginFinder(File directory) {
@@ -30,8 +31,10 @@ public class PluginFinder implements ActionListener {
 
 	private void updateObservers(File dir, Set<String> added,
 			Set<String> deleted) {
-		for (PluginObserver observer : this.observers) {
-			observer.updateOnAddittion(dir, added);
+		List<PluginObserver> observersToUpdate = new ArrayList<PluginObserver>();
+		observersToUpdate.addAll(this.observers);
+		for (PluginObserver observer : observersToUpdate) {
+			observer.updateOnAddition(dir, added);
 			observer.updateOnDeletion(dir, added);
 		}
 	}
@@ -57,4 +60,8 @@ public class PluginFinder implements ActionListener {
 		this.updateObservers(this.directory, added, deleted);
 	}
 
+	public void subscribeAnObserver(PluginObserver observer){
+		this.observers.add(observer);
+	}
+	
 }

@@ -6,7 +6,7 @@ import java.util.Set;
 public class PluginLogger extends PluginObserver {
 
 	@Override
-	public void updateOnAddittion(File dir, Set<String> added) {
+	public void updateOnAddition(File dir, Set<String> added) {
 		for(String add : added)
 			System.out.println(add + " added.");
 	}
