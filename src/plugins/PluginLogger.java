@@ -5,6 +5,10 @@ import java.util.Set;
 
 public class PluginLogger extends PluginObserver {
 
+	public PluginLogger(File directory) {
+		super(directory);
+	}
+
 	@Override
 	public void updateOnAddition(File dir, Set<String> added) {
 		for(String add : added)

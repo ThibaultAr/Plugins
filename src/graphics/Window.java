@@ -1,14 +1,17 @@
 package graphics;
 import java.awt.BorderLayout;
-import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import javax.swing.*;
-
-import plugins.PluginFinder;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 
 public class Window {
@@ -29,11 +32,18 @@ public class Window {
 	
 	protected void createMenus() {
 		
-		JMenu file = new JMenu("file");
+		JMenu file = new JMenu("File");
 		JMenu tools = new JMenu("Tools");
 		JMenu help = new JMenu("Help");
-		// TODO file a passer en parametre
-		//tools.addActionListener(new PluginFinder());
+		ActionListener action = new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				// fonction d'affichage des tools ? 
+				
+			}
+		};
+		tools.addActionListener(action);
 		this.menus.add(file);
 		this.menus.add(tools);
 		this.menus.add(help);
@@ -49,8 +59,6 @@ public class Window {
 	protected void createTextAreaAndScroll() {
 		this.textArea = new JTextArea("Some text we want to transform",25,100);
 		this.textAreaScrollPane = new JScrollPane(textArea);
-		this.textAreaScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		this.textAreaScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 	}
 	
 	protected void addToPanel(JPanel content) {
@@ -60,7 +68,6 @@ public class Window {
 	
 	public Window() {
 		this.window = new JFrame("Extendable Editor");
-		this.window.setSize(400,200);
 		this.window.setLocation(100, 100);
 		this.window.addWindowListener(new FermeWindowEvent());
 		
@@ -74,14 +81,13 @@ public class Window {
 					
 		this.window.setContentPane(content);
 		this.window.setVisible(true);
+		this.window.pack();
 	}
 	
 	
 	//ebauche de la fenetre graphique qui sera affichée 
 	public static void main(String[] args) {
-		Window app = new Window();
-		
-		//commandes a executer ? 
+		new Window();
 	}
 	
 	
