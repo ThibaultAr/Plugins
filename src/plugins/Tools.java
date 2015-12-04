@@ -17,18 +17,10 @@ public class Tools extends PluginObserver {
 	@Override
 	public void updateOnAddition(File dir, Set<String> added) {
 		for (String pluginFile : added) {
-			String className = PluginFilter.getClassName(pluginFile);
-			try {
-				Class<? extends Plugin> plugin = Class.forName(className).asSubclass(plugins.Plugin.class);
-				Plugin pluginInstance = plugin.newInstance();
-				this.plugins.put(pluginFile, pluginInstance);
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			} catch (InstantiationException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			}
+			Plugin plugin = PluginInstantiation.getPluginInstance(dir, pluginFile);
+			if (plugin == null)
+				throw new IllegalStateException("we just checked PluginFilter.accept()");
+			this.plugins.put(pluginFile, plugin);
 		}
 	}
 
