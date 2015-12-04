@@ -15,6 +15,7 @@ public class PluginFilterTest {
 		assertFalse(pluginFilter.accept(null, "test.class"));
 		assertFalse(pluginFilter.accept(null, "MockPrivatePlugin.class"));
 		assertFalse(pluginFilter.accept(null, "MockNotNullaryConstructorPlugin.class"));
+		assertFalse(pluginFilter.accept(null, "MockNotImplementsPlugin.class"));
 		assertTrue(pluginFilter.accept(null, "MockPlugin.class"));
 	}
 	

@@ -4,7 +4,8 @@ import java.io.File;
 /**
  * Create a mock directory containing the files : "hello", "hello.txt",
  * "hello.class", ".classhello", "he.classllo", ".class", "MockPlugin.class",
- * "MockPrivatePlugin.class", "MockNotNullaryConstructorPlugin.class"
+ * "MockPrivatePlugin.class", "MockNotNullaryConstructorPlugin.class",
+ * "MockNotImplementsPlugin.class"
  */
 public class MockFile extends File {
 
@@ -17,7 +18,8 @@ public class MockFile extends File {
 	@Override
 	public String[] list() {
 		String files[] = { "hello", "hello.txt", "hello.class", ".classhello", "he.classllo", ".class",
-				"MockPlugin.class", "MockPrivatePlugin.class", "MockNotNullaryConstructorPlugin.class" };
+				"MockPlugin.class", "MockPrivatePlugin.class", "MockNotNullaryConstructorPlugin.class",
+				"MockNotImplementsPlugin.class" };
 		return files;
 	}
 

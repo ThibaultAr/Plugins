@@ -4,15 +4,7 @@ import java.io.FilenameFilter;
 
 public class PluginFilter implements FilenameFilter {
 
-	protected Class<?> pluginInterface;
-
-	public PluginFilter() {
-		try {
-			this.pluginInterface = Class.forName("plugins.Plugin");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
+	protected Class<Plugin> pluginInterface = plugins.Plugin.class;
 
 	@Override
 	public boolean accept(File dir, String name) {
@@ -21,7 +13,8 @@ public class PluginFilter implements FilenameFilter {
 		try {
 			String className = PluginFilter.getClassName(name);
 			Class<?> plugin = Class.forName(className);
-			plugin.isAssignableFrom(this.pluginInterface);
+			if (!(pluginInterface).isAssignableFrom(plugin))
+				return false;
 			plugin.newInstance();
 			return true;
 		} catch (ClassNotFoundException e) {

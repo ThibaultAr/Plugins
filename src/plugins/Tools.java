@@ -19,8 +19,7 @@ public class Tools extends PluginObserver {
 		for (String pluginFile : added) {
 			String className = PluginFilter.getClassName(pluginFile);
 			try {
-				@SuppressWarnings("unchecked")
-				Class<? extends Plugin> plugin = (Class<? extends Plugin>) Class.forName(className);
+				Class<? extends Plugin> plugin = Class.forName(className).asSubclass(plugins.Plugin.class);
 				Plugin pluginInstance = plugin.newInstance();
 				this.plugins.put(pluginFile, pluginInstance);
 			} catch (ClassNotFoundException e) {
