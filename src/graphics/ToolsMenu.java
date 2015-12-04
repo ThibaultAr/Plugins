@@ -10,9 +10,9 @@ import javax.swing.event.MenuListener;
 import plugins.Tools;
 
 public class ToolsMenu extends JMenu implements MenuListener {
-
 	/**
-	 * TODO serialize
+	 * Class version, it is used to check if the server and client have the same
+	 * version of this class
 	 */
 	private static final long serialVersionUID = -5667671380579196694L;
 	protected Tools tools;
@@ -27,10 +27,15 @@ public class ToolsMenu extends JMenu implements MenuListener {
 	public void menuSelected(MenuEvent e) {
 		Set<String> pluginFiles = this.tools.getPluginFiles();
 		for (String pluginFile : pluginFiles) {
-			JMenuItem pluginItem = new JMenuItem(pluginFile);
+			String pluginLabel = this.tools.pluginLabel(pluginFile);
+			JMenuItem pluginItem = new JMenuItem(pluginLabel);
 			this.add(pluginItem);
 			pluginItem.addActionListener(event -> {
-				Window.textArea.setText(this.tools.getTransformMethod(pluginFile, Window.textArea.getText()));
+				if (Window.textArea != null) {
+					String text = Window.textArea.getText();
+					text = this.tools.invokePluginTansformMethod(pluginFile, text);
+					Window.textArea.setText(text);
+				}
 			});
 		}
 	}

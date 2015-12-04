@@ -35,7 +35,7 @@ public class Window {
 		this.menus = new ArrayList<JMenu>();
 		
 		this.window = new JFrame("Extendable Editor");
-		this.window.setLocation(100, 100);
+		this.window.setLocation(0, 0);
 		this.window.addWindowListener(new FermeWindowEvent());
 		
 		JPanel content = new JPanel();
@@ -70,7 +70,7 @@ public class Window {
 	}
 	
 	protected void createTextAreaAndScroll() {
-		Window.textArea = new JTextArea("Some text we want to transform", 25, 100);
+		Window.textArea = new JTextArea("", 25, 50);
 		this.textAreaScrollPane = new JScrollPane(textArea);
 	}
 	
@@ -82,7 +82,6 @@ public class Window {
 	/*
 	 * Internal Classes
 	 */
-	
 	class FermeWindowEvent extends WindowAdapter {
 		@Override
 		public void windowClosing(java.awt.event.WindowEvent e) {

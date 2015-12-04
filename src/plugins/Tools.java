@@ -19,8 +19,9 @@ public class Tools extends PluginObserver {
 		for (String pluginFile : added) {
 			String className = PluginFilter.getClassName(pluginFile);
 			try {
-				Class<?> plugin = Class.forName(className);
-				Plugin pluginInstance = (Plugin) plugin.newInstance();
+				@SuppressWarnings("unchecked")
+				Class<? extends Plugin> plugin = (Class<? extends Plugin>) Class.forName(className);
+				Plugin pluginInstance = plugin.newInstance();
 				this.plugins.put(pluginFile, pluginInstance);
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
@@ -43,8 +44,13 @@ public class Tools extends PluginObserver {
 		return this.plugins.keySet();
 	}
 
-	public String getTransformMethod(String pluginFile, String textArea) {
+	public String invokePluginTansformMethod(String pluginFile, String text) {
 		Plugin plugin = this.plugins.get(pluginFile);
-		return plugin.transform(textArea);
+		return plugin.transform(text);
+	}
+
+	public String pluginLabel(String pluginFile) {
+		Plugin plugin = this.plugins.get(pluginFile);
+		return plugin.getLabel();
 	}
 }

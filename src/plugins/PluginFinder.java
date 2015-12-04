@@ -29,10 +29,10 @@ public class PluginFinder implements ActionListener {
 		return this.directory.list(this.filter);
 	}
 
-	private void updateObservers(File dir, Set<String> added,
-			Set<String> deleted) {
-		List<PluginObserver> observersToUpdate = new ArrayList<PluginObserver>();
-		observersToUpdate.addAll(this.observers);
+	private void updateObservers(File dir, Set<String> added, Set<String> deleted) {
+		// we create a copy because if the observers's list is update during the
+		// for loop
+		List<PluginObserver> observersToUpdate = new ArrayList<PluginObserver>(this.observers);
 		for (PluginObserver observer : observersToUpdate) {
 			observer.updateOnDeletion(dir, deleted);
 			observer.updateOnAddition(dir, added);
@@ -63,8 +63,10 @@ public class PluginFinder implements ActionListener {
 
 	public void subscribeAnObserver(PluginObserver observer){
 		this.observers.add(observer);
-		// TODO envoyer tous à l'oberser qui vient de s'enregistrer
-		// pour qu'il possède la base des fichiers déjà trouvés
+		// we create a copy because if the plugins's list is update during the
+		// execution in the observer
+		Set<String> pluginsCopy = new HashSet<>(this.plugins);
+		observer.updateOnAddition(this.directory, pluginsCopy);
 	}
 	
 }

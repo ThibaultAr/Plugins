@@ -4,12 +4,12 @@ public class MockPlugin implements Plugin {
 
 	@Override
 	public String transform(String s) {
-		return "coucou";
+		return "Mock plugin";
 	}
 
 	@Override
 	public String getLabel() {
-		return null;
+		return "Mock plugin";
 	}
 
 }
