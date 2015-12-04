@@ -42,4 +42,9 @@ public class Tools extends PluginObserver {
 	public Set<String> getPluginFiles() {
 		return this.plugins.keySet();
 	}
+
+	public String getTransformMethod(String pluginFile, String textArea) {
+		Plugin plugin = this.plugins.get(pluginFile);
+		return plugin.transform(textArea);
+	}
 }

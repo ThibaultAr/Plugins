@@ -20,7 +20,7 @@ public class Window {
 	protected JFrame window;
 	protected JMenuBar menuBar;
 	protected List<JMenu> menus;
-	protected JTextArea textArea;
+	protected static JTextArea textArea;
 	protected JScrollPane textAreaScrollPane;
 	protected JMenu toolsMenu;
 	
@@ -70,7 +70,7 @@ public class Window {
 	}
 	
 	protected void createTextAreaAndScroll() {
-		this.textArea = new JTextArea("Some text we want to transform",25,100);
+		Window.textArea = new JTextArea("Some text we want to transform", 25, 100);
 		this.textAreaScrollPane = new JScrollPane(textArea);
 	}
 	

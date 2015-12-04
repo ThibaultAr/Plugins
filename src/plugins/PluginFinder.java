@@ -41,12 +41,13 @@ public class PluginFinder implements ActionListener {
 
 	// TODO ObserverMock to test updates
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		List<String> newDirComposition = Arrays.asList(this.acceptedFiles());
 		Set<String> added = new HashSet<String>();
 		Set<String> deleted = new HashSet<String>();
 
-		for (String plugin : plugins)
+		for (String plugin : this.plugins)
 			if (!newDirComposition.contains(plugin))
 				deleted.add(plugin);
 
@@ -62,6 +63,8 @@ public class PluginFinder implements ActionListener {
 
 	public void subscribeAnObserver(PluginObserver observer){
 		this.observers.add(observer);
+		// TODO envoyer tous à l'oberser qui vient de s'enregistrer
+		// pour qu'il possède la base des fichiers déjà trouvés
 	}
 	
 }

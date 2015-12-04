@@ -23,17 +23,24 @@ public class ToolsMenu extends JMenu implements MenuListener {
 		this.addMenuListener(this);
 	}
 
+	@Override
 	public void menuSelected(MenuEvent e) {
-		Set<String> pluginsFiles = this.tools.getPluginFiles();
-		for (String pluginFile : pluginsFiles) {
-			this.add(new JMenuItem(pluginFile));
+		Set<String> pluginFiles = this.tools.getPluginFiles();
+		for (String pluginFile : pluginFiles) {
+			JMenuItem pluginItem = new JMenuItem(pluginFile);
+			this.add(pluginItem);
+			pluginItem.addActionListener(event -> {
+				Window.textArea.setText(this.tools.getTransformMethod(pluginFile, Window.textArea.getText()));
+			});
 		}
 	}
 
+	@Override
 	public void menuDeselected(MenuEvent e) {
 		this.removeAll();
 	}
 
+	@Override
 	public void menuCanceled(MenuEvent e) {
 		this.removeAll();
 	}

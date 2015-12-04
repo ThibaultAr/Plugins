@@ -14,6 +14,7 @@ public class PluginFilter implements FilenameFilter {
 		}
 	}
 
+	@Override
 	public boolean accept(File dir, String name) {
 		if (!PluginFilter.isClass(name))
 			return false;
