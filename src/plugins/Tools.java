@@ -9,11 +9,10 @@ public class Tools extends PluginObserver {
 	
 	protected Map<String, Plugin> plugins;
 	
-	public Tools(File directory) {
-		super(directory);
+	public Tools(PluginFinder pluginFinder) {
+		super(pluginFinder);
 		this.plugins = new HashMap<String,Plugin>();
 	}
-	
 
 	@Override
 	public void updateOnAddition(File dir, Set<String> added) {
@@ -40,6 +39,7 @@ public class Tools extends PluginObserver {
 		}
 	}
 	
-	
-
+	public Set<String> getPluginFiles() {
+		return this.plugins.keySet();
+	}
 }

@@ -26,7 +26,7 @@ public class PluginFinderTest {
 	
 	@Test
 	public void testSubcription(){
-		PluginObserver logger = new PluginLogger();
+		PluginObserver logger = new PluginLogger(null);
 		PluginFinder finder = new PluginFinder(new MockFile());
 		
 		assertFalse(finder.observers.contains(logger));

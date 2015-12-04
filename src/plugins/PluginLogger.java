@@ -5,8 +5,8 @@ import java.util.Set;
 
 public class PluginLogger extends PluginObserver {
 
-	public PluginLogger(File directory) {
-		super(directory);
+	public PluginLogger(PluginFinder pluginFinder) {
+		super(pluginFinder);
 	}
 
 	@Override
@@ -21,5 +21,11 @@ public class PluginLogger extends PluginObserver {
 			System.out.println(delete + " deleted.");
 	}
 
-
+	public static void main(String[] args) {
+		File directory = new File("dropins");
+		PluginFinder pluginFinder = new PluginFinder(directory);
+		new PluginLogger(pluginFinder);
+		while (true) {
+		}
+	}
 }

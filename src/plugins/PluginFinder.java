@@ -34,8 +34,8 @@ public class PluginFinder implements ActionListener {
 		List<PluginObserver> observersToUpdate = new ArrayList<PluginObserver>();
 		observersToUpdate.addAll(this.observers);
 		for (PluginObserver observer : observersToUpdate) {
+			observer.updateOnDeletion(dir, deleted);
 			observer.updateOnAddition(dir, added);
-			observer.updateOnDeletion(dir, added);
 		}
 	}
 
