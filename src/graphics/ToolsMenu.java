@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JTextArea;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
@@ -15,11 +16,14 @@ public class ToolsMenu extends JMenu implements MenuListener {
 	 * version of this class
 	 */
 	private static final long serialVersionUID = -5667671380579196694L;
-	protected Tools tools;
 
-	public ToolsMenu(Tools tools) {
+	protected Tools tools;
+	protected JTextArea textArea;
+
+	public ToolsMenu(Tools tools, JTextArea textArea) {
 		super("Tools");
 		this.tools = tools;
+		this.textArea = textArea;
 		this.addMenuListener(this);
 	}
 
@@ -31,11 +35,9 @@ public class ToolsMenu extends JMenu implements MenuListener {
 			JMenuItem pluginItem = new JMenuItem(pluginLabel);
 			this.add(pluginItem);
 			pluginItem.addActionListener(event -> {
-				if (Window.textArea != null) {
-					String text = Window.textArea.getText();
-					text = this.tools.invokePluginTansformMethod(pluginFile, text);
-					Window.textArea.setText(text);
-				}
+				String text = this.textArea.getText();
+				text = this.tools.invokePluginTansformMethod(pluginFile, text);
+				this.textArea.setText(text);
 			});
 		}
 	}
