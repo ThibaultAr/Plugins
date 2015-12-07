@@ -29,7 +29,7 @@ public class PluginFinder implements ActionListener {
 		return this.directory.list(this.filter);
 	}
 
-	private void updateObservers(File dir, Set<String> added, Set<String> deleted) {
+	protected void updateObservers(File dir, Set<String> added, Set<String> deleted) {
 		// we create a copy because if the observers's list is update during the
 		// for loop
 		List<PluginObserver> observersToUpdate = new ArrayList<PluginObserver>(this.observers);
@@ -38,8 +38,6 @@ public class PluginFinder implements ActionListener {
 			observer.updateOnAddition(dir, added);
 		}
 	}
-
-	// TODO ObserverMock to test updates
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

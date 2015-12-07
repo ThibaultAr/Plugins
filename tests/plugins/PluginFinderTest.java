@@ -25,6 +25,18 @@ public class PluginFinderTest {
 	}
 	
 	@Test
+	public void testObserverShouldSubscribeWhenInstanciate(){
+		PluginFinder finder = new PluginFinder(new MockFile());
+		
+		assertTrue(finder.observers.isEmpty());
+		
+		PluginObserver logger = new PluginLogger(finder);
+		finder.subscribeAnObserver(logger);
+		
+		assertTrue(finder.observers.contains(logger));
+	}
+	
+	@Test
 	public void testSubcription(){
 		PluginFinder finder = new PluginFinder(new MockFile());
 		PluginObserver logger = new PluginLogger(new PluginFinder(null));
@@ -34,5 +46,43 @@ public class PluginFinderTest {
 		finder.subscribeAnObserver(logger);
 		
 		assertTrue(finder.observers.contains(logger));
+	}
+	
+	@Test
+	public void testUpdateObservers(){
+		PluginFinder finder = new PluginFinder(new MockFile());
+		MockPluginObserver observer = new MockPluginObserver(finder);
+		
+		assertFalse(observer.passageInUpdateAddition);
+		assertFalse(observer.passageInUpdateDeletion);
+		
+		finder.updateObservers(null, null, null);
+		
+		assertTrue(observer.passageInUpdateAddition);
+		assertTrue(observer.passageInUpdateDeletion);	
+	}
+	
+	@Test
+	public void actionPerformedTest() {
+		PluginFinder finder = new PluginFinder(new MockFile());
+		finder.timer.stop();
+		finder.plugins.clear();
+		
+		assertTrue(finder.plugins.isEmpty());
+		
+		finder.actionPerformed(null);
+		
+		assertEquals(1, finder.plugins.size());
+		assertTrue(finder.plugins.contains("MockPlugin.class"));
+		
+		finder.plugins.add("Test.class");
+		
+		assertEquals(2, finder.plugins.size());
+		assertTrue(finder.plugins.contains("Test.class"));
+		
+		finder.actionPerformed(null);
+		
+		assertEquals(1, finder.plugins.size());
+		assertTrue(finder.plugins.contains("MockPlugin.class"));
 	}
 }
