@@ -86,6 +86,6 @@ public class Window {
 	}
 
 	public static void main(String[] args) {
-		new Window("dropins");
+		new Window("dropins/plugins");
 	}
 }
