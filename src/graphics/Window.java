@@ -38,7 +38,7 @@ public class Window {
 	}
 
 	/**
-	 * do before to use the textArea attribute
+	 * do before using the textArea attribute
 	 */
 	protected JScrollPane createTextAreaAndScroll() {
 		this.textArea = new JTextArea("", 25, 50);
@@ -57,7 +57,7 @@ public class Window {
 	}
 
 	/**
-	 * do before to use the toolsMenu attribute
+	 * do before using the toolsMenu attribute
 	 */
 	protected void createToolsMenu(String toolsDirectory) {
 		File directory = new File(toolsDirectory);

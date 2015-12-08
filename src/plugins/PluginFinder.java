@@ -10,7 +10,10 @@ import java.util.Set;
 
 import javax.swing.Timer;
 
-
+/**
+ * Action listener which finds all the plugins in a directory.
+ *
+ */
 public class PluginFinder implements ActionListener {
 
 	protected PluginFilter filter = new PluginFilter();
@@ -19,18 +22,31 @@ public class PluginFinder implements ActionListener {
 	protected List<PluginObserver> observers = new ArrayList<PluginObserver>();
 	protected Timer timer;
 
+	/**
+	 * constructs a plugin finder
+	 * @param directory in which the plugins will be searched
+	 */
 	public PluginFinder(File directory) {
 		this.directory = directory;
 		this.timer = new Timer(1000, this);
 		this.timer.start();
 	}
 
+	/**
+	 * @return an array containing the name of the files, as String, considered as plugins 
+	 */
 	public String[] acceptedFiles() {
 		return this.directory.list(this.filter);
 	}
 
+	/**
+	 * Update the plugins which can be use depending if they're still in the directory or not
+	 * @param dir the directory containing the plugins
+	 * @param added the plugins that has been added
+	 * @param deleted the one that has been deleted
+	 */
 	protected void updateObservers(File dir, Set<String> added, Set<String> deleted) {
-		// we create a copy because if the observers's list is update during the
+		//creation of a copy in case the observers's list updates during the
 		// for loop
 		List<PluginObserver> observersToUpdate = new ArrayList<PluginObserver>(this.observers);
 		for (PluginObserver observer : observersToUpdate) {
@@ -59,6 +75,11 @@ public class PluginFinder implements ActionListener {
 		this.updateObservers(this.directory, added, deleted);
 	}
 
+	/**
+	 * Sucribes a Plugin observer to this plugin finder 
+	 * For more information please check the Plugin observer documentation
+	 * @param observer to subscribe
+	 */
 	public void subscribeAnObserver(PluginObserver observer){
 		this.observers.add(observer);
 		// Creation of a copy in case the plugins's list is updated during the

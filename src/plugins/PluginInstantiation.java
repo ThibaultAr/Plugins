@@ -2,6 +2,10 @@ package plugins;
 
 import java.io.File;
 
+/**
+ * 
+ *
+ */
 public class PluginInstantiation {
 
 	protected static Class<Plugin> pluginInterface = plugins.Plugin.class;
@@ -19,14 +23,18 @@ public class PluginInstantiation {
 	public static Plugin getPluginInstance(File dir, String name) {
 		if (!PluginInstantiation.isClass(name))
 			return null;
+		
 		try {
 			String className = PluginInstantiation.getClassName(name);
 			Class<?> maybePlugin = Class.forName(className);
+			
 			if (!(PluginInstantiation.pluginInterface).isAssignableFrom(maybePlugin))
 				return null;
+			
 			Class<? extends Plugin> plugin = maybePlugin.asSubclass(PluginInstantiation.pluginInterface);
 			return plugin.newInstance();
-		} catch (ClassNotFoundException e) {
+		} 
+		catch (ClassNotFoundException e) {
 			return null;
 		} catch (InstantiationException e) {
 			return null;
