@@ -23,7 +23,7 @@ public class PluginObserverTest {
 	@Test
 	//updateOnAddition is tested here as subsribeAPluginFinder calls this method
 	public void suscribeAPluginFinderTest() { 
-		assertFalse(this.testObserver.getPassageOnDeletion());
+		assertFalse(this.testObserver.getPassageOnAddition());
 		testObserver.subscribeAPluginFinder(this.testFinder);
 		assertTrue(this.testObserver.getPassageOnAddition());
 	}

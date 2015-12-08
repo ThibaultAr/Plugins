@@ -84,8 +84,14 @@ public class PluginFinder implements ActionListener {
 		this.observers.add(observer);
 		// Creation of a copy in case the plugins's list is updated during the
 		// observer's execution
-		Set<String> pluginsCopy = new HashSet<>(this.plugins);
-		observer.updateOnAddition(this.directory, pluginsCopy);
+		
+		//TODO verify it's correct
+		this.actionPerformed(null);
+//		Set<String> pluginsCopy = new HashSet<>(this.plugins);
+//		observer.updateOnAddition(this.directory, pluginsCopy);
 	}
 	
+	protected boolean isObservedBy(PluginObserver observer){
+		return this.observers.contains(observer);
+	}
 }

@@ -22,7 +22,7 @@ public class ToolsMenu extends JMenu implements MenuListener {
 
 	public ToolsMenu(Tools tools, JTextArea textArea) {
 		super("Tools");
-		this.tools = tools;
+	    this.tools = tools;
 		this.textArea = textArea;
 		this.addMenuListener(this);
 	}

@@ -37,5 +37,5 @@ public abstract class PluginObserver {
 	 */
 	public void subscribeAPluginFinder (PluginFinder finder) {
 		finder.subscribeAnObserver(this);
-	}	
+	}
 }

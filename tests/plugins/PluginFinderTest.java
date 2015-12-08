@@ -39,7 +39,7 @@ public class PluginFinderTest {
 	@Test
 	public void testSubcription(){
 		PluginFinder finder = new PluginFinder(new MockFile());
-		PluginObserver logger = new PluginLogger(new PluginFinder(null));
+		PluginObserver logger = new PluginLogger(new PluginFinder(new MockEmptyFile()));
 		
 		assertFalse(finder.observers.contains(logger));
 		
