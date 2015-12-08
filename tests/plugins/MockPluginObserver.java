@@ -22,4 +22,12 @@ public class MockPluginObserver extends PluginObserver{
 		this.passageInUpdateDeletion = true;
 	}
 	
+	public boolean getPassageOnAddition() {
+		return this.passageInUpdateAddition;
+	}
+	
+	public boolean getPassageOnDeletion() {
+		return this.passageInUpdateDeletion;
+	}
+	
 }
