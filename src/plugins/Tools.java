@@ -2,7 +2,6 @@ package plugins;
 
 import java.io.File;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -12,12 +11,6 @@ public class Tools extends PluginObserver {
 	
 	public Tools(PluginFinder pluginFinder) {
 		super(pluginFinder);
-	}
-
-	
-	
-	public Map<String,Plugin> getMap() {
-		return this.plugins;
 	}
 	
 	@Override
