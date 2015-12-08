@@ -1,4 +1,5 @@
 package plugins;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -24,7 +25,9 @@ public class PluginFinder implements ActionListener {
 
 	/**
 	 * constructs a plugin finder
-	 * @param directory in which the plugins will be searched
+	 * 
+	 * @param directory
+	 *            in which the plugins will be searched
 	 */
 	public PluginFinder(File directory) {
 		this.directory = directory;
@@ -33,20 +36,26 @@ public class PluginFinder implements ActionListener {
 	}
 
 	/**
-	 * @return an array containing the name of the files, as String, considered as plugins 
+	 * @return an array containing the name of the files, as String, considered
+	 *         as plugins
 	 */
 	public String[] acceptedFiles() {
 		return this.directory.list(this.filter);
 	}
 
 	/**
-	 * Update the plugins which can be use depending if they're still in the directory or not
-	 * @param dir the directory containing the plugins
-	 * @param added the plugins that has been added
-	 * @param deleted the one that has been deleted
+	 * Update the plugins which can be use depending if they're still in the
+	 * directory or not
+	 * 
+	 * @param dir
+	 *            the directory containing the plugins
+	 * @param added
+	 *            the plugins that has been added
+	 * @param deleted
+	 *            the one that has been deleted
 	 */
 	protected void updateObservers(File dir, Set<String> added, Set<String> deleted) {
-		//creation of a copy in case the observers's list updates during the
+		// creation of a copy in case the observers's list updates during the
 		// for loop
 		List<PluginObserver> observersToUpdate = new ArrayList<PluginObserver>(this.observers);
 		for (PluginObserver observer : observersToUpdate) {
@@ -76,22 +85,24 @@ public class PluginFinder implements ActionListener {
 	}
 
 	/**
-	 * Sucribes a Plugin observer to this plugin finder 
-	 * For more information please check the Plugin observer documentation
-	 * @param observer to subscribe
+	 * Sucribes a Plugin observer to this plugin finder For more information
+	 * please check the Plugin observer documentation
+	 * 
+	 * @param observer
+	 *            to subscribe
 	 */
-	public void subscribeAnObserver(PluginObserver observer){
+	public void subscribeAnObserver(PluginObserver observer) {
 		this.observers.add(observer);
 		// Creation of a copy in case the plugins's list is updated during the
 		// observer's execution
-		
-		//TODO verify it's correct
+
+		// TODO verify it's correct
 		this.actionPerformed(null);
-//		Set<String> pluginsCopy = new HashSet<>(this.plugins);
-//		observer.updateOnAddition(this.directory, pluginsCopy);
+		// Set<String> pluginsCopy = new HashSet<>(this.plugins);
+		// observer.updateOnAddition(this.directory, pluginsCopy);
 	}
-	
-	protected boolean isObservedBy(PluginObserver observer){
+
+	protected boolean isObservedBy(PluginObserver observer) {
 		return this.observers.contains(observer);
 	}
 }

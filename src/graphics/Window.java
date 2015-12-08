@@ -1,4 +1,5 @@
 package graphics;
+
 import java.awt.BorderLayout;
 import java.awt.event.WindowAdapter;
 import java.io.File;
@@ -14,12 +15,12 @@ import plugins.PluginFinder;
 import plugins.Tools;
 
 public class Window {
-	
+
 	protected JFrame window;
 	protected JMenuBar menuBar;
 	protected JTextArea textArea;
 	protected JMenu toolsMenu;
-	
+
 	public Window(String toolsDirectory) {
 		JPanel content = this.createContentJPanel(toolsDirectory);
 		this.configureWindow(content);
@@ -74,7 +75,7 @@ public class Window {
 		this.window.setVisible(true);
 		this.window.pack();
 	}
-	
+
 	/*
 	 * Internal Classes
 	 */

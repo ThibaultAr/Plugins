@@ -3,11 +3,11 @@ package plugins;
 import java.io.File;
 import java.util.Set;
 
-public class MockPluginObserver extends PluginObserver{
-	
+public class MockPluginObserver extends PluginObserver {
+
 	protected boolean passageInUpdateAddition = false;
-	protected boolean passageInUpdateDeletion = false;	
-	
+	protected boolean passageInUpdateDeletion = false;
+
 	public MockPluginObserver(PluginFinder pluginFinder) {
 		super(pluginFinder);
 	}
@@ -21,13 +21,13 @@ public class MockPluginObserver extends PluginObserver{
 	public void updateOnDeletion(File dir, Set<String> deleted) {
 		this.passageInUpdateDeletion = true;
 	}
-	
+
 	public boolean getPassageOnAddition() {
 		return this.passageInUpdateAddition;
 	}
-	
+
 	public boolean getPassageOnDeletion() {
 		return this.passageInUpdateDeletion;
 	}
-	
+
 }

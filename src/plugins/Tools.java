@@ -2,29 +2,22 @@ package plugins;
 
 import java.io.File;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 public class Tools extends PluginObserver {
-	
+
 	protected Map<String, Plugin> plugins;
-	
+
 	public Tools(PluginFinder pluginFinder) {
 		super(pluginFinder);
 	}
 
-	
-	
-	public Map<String,Plugin> getMap() {
-		return this.plugins;
-	}
-	
 	@Override
 	public void updateOnAddition(File dir, Set<String> added) {
-		if(this.plugins == null)
+		if (this.plugins == null)
 			this.plugins = new HashMap<String, Plugin>();
-		
+
 		for (String pluginFile : added) {
 			Plugin plugin = PluginInstantiation.getPluginInstance(dir, pluginFile);
 			if (plugin == null)
@@ -39,7 +32,7 @@ public class Tools extends PluginObserver {
 			this.plugins.remove(pluginFile);
 		}
 	}
-	
+
 	public Set<String> getPluginFiles() {
 		return this.plugins.keySet();
 	}
