@@ -1,38 +1,29 @@
 package plugins;
 
-import static org.junit.Assert.*;
-
-import java.util.HashSet;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
 
-public class PluginObserverTest {
+public abstract class PluginObserverTest {
 	
-	MockPluginObserver testObserver;
+	PluginObserver testObserver;
 	PluginFinder testFinder;
-	MockFile testFile;
 	
+	
+	public abstract PluginObserver createObserver(PluginFinder finder);
+
 	@Before
-	public void createObserver() {
-		this.testFile = new MockFile();
-		this.testFinder = new PluginFinder(this.testFile);
-		this.testObserver = new MockPluginObserver(testFinder);
+	public void initialize() {
+		this.testFinder = new PluginFinder(new MockFile());
+		this.testObserver = this.createObserver(this.testFinder);
+	}
+	
+	
+	@Test
+	public void suscribeAPluginFinderTest() { 
+		assertTrue(this.testFinder.isObservedBy(this.testObserver));
 	}
 
-	@Test
-	//updateOnAddition is tested here as subsribeAPluginFinder calls this method
-	public void suscribeAPluginFinderTest() { 
-		assertFalse(this.testObserver.getPassageOnAddition());
-		testObserver.subscribeAPluginFinder(this.testFinder);
-		assertTrue(this.testObserver.getPassageOnAddition());
-	}
-	
-	@Test
-	public void updateOnDeletionTest() {
-		assertFalse(this.testObserver.getPassageOnDeletion());
-		testObserver.updateOnDeletion(this.testFile,new HashSet<String>() );
-		assertTrue(this.testObserver.getPassageOnDeletion());
-	}
 
 }

@@ -37,7 +37,7 @@ public class ToolsTest extends PluginObserverTest {
 	
 	// updateOnAddition is tested too when subscription is called 
 	@Test
-	public void testSubscription(){
+	public void testAddition(){
 		PluginFinder emptyFinder = new PluginFinder(new MockEmptyFile());
 		PluginFinder finder = new PluginFinder(new MockFile());
 		Tools tools = new Tools(emptyFinder);
@@ -47,7 +47,13 @@ public class ToolsTest extends PluginObserverTest {
 		tools.subscribeAPluginFinder(finder);
 		
 		assertTrue(finder.isObservedBy(tools));
-		assertFalse(tools.plugins.isEmpty());
 		assertTrue(tools.plugins.containsKey("MockPlugin.class"));
 	}
+
+	@Override
+	public PluginObserver createObserver(PluginFinder finder) {
+		return new Tools(finder);
+	}
+	
+	
 }
