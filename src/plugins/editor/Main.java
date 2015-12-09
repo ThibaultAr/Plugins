@@ -1,7 +1,8 @@
 package plugins.editor;
 
 /**
- * TODO
+ * This class launch the application. 
+ * Open a window with a text area and some plugins in the Tools menu.
  *
  */
 public class Main {

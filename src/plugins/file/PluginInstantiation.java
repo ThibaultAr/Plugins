@@ -5,7 +5,8 @@ import java.io.File;
 import plugins.Plugin;
 
 /**
- * TODO
+ * PluginInstantiation only contains static methods.
+ * Serves to instantiate a plugin with is name.
  *
  */
 public class PluginInstantiation {
@@ -13,7 +14,7 @@ public class PluginInstantiation {
 	protected static Class<Plugin> pluginInterface = plugins.Plugin.class;
 
 	/**
-	 * TODO comment
+	 * Returns a instance of the plugin whose name is passed as a parameter
 	 * 
 	 * @param dir
 	 * @param name
