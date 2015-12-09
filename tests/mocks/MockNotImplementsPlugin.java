@@ -1,4 +1,4 @@
-package plugins;
+package mocks;
 
 public class MockNotImplementsPlugin {
 

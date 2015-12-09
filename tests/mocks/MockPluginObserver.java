@@ -1,12 +1,15 @@
-package plugins;
+package mocks;
 
 import java.io.File;
 import java.util.Set;
 
+import plugins.PluginFinder;
+import plugins.PluginObserver;
+
 public class MockPluginObserver extends PluginObserver {
 
-	protected boolean passageInUpdateAddition = false;
-	protected boolean passageInUpdateDeletion = false;
+	public boolean passageInUpdateAddition = false;
+	public boolean passageInUpdateDeletion = false;
 
 	public MockPluginObserver(PluginFinder pluginFinder) {
 		super(pluginFinder);
@@ -21,13 +24,4 @@ public class MockPluginObserver extends PluginObserver {
 	public void updateOnDeletion(File dir, Set<String> deleted) {
 		this.passageInUpdateDeletion = true;
 	}
-
-	public boolean getPassageOnAddition() {
-		return this.passageInUpdateAddition;
-	}
-
-	public boolean getPassageOnDeletion() {
-		return this.passageInUpdateDeletion;
-	}
-
 }

@@ -1,4 +1,6 @@
-package plugins;
+package mocks;
+
+import plugins.Plugin;
 
 public class MockPrivatePlugin implements Plugin {
 

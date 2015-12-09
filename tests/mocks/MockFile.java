@@ -1,4 +1,4 @@
-package plugins;
+package mocks;
 
 import java.io.File;
 

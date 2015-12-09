@@ -8,6 +8,9 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
+import mocks.MockFile;
+import mocks.MockPluginObserver;
+
 public class PluginFinderTest {
 
 	@Test

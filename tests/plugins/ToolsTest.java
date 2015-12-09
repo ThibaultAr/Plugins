@@ -1,33 +1,37 @@
 package plugins;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.Test;
 
+import mocks.MockPluginFinder;
+
 public class ToolsTest extends PluginObserverTest {
 
 	@Test
 	public void invokePluginTansformMethodTest() {
-		MockFile mockFile = new MockFile();
-		PluginFinder pluginFinder = new PluginFinder(mockFile);
+		MockPluginFinder pluginFinder = new MockPluginFinder();
 		Tools tools = new Tools(pluginFinder);
 
+		tools.updateOnAddition(null, pluginFinder.plugins);
+		
 		String transform = tools.invokePluginTansformMethod("MockPlugin.class", "blabla");
 		assertEquals("Mock plugin", transform);
 	}
 
 	@Test
 	public void updateOnDeletionTest() {
-		MockFile mockFile = new MockFile();
-		PluginFinder pluginFinder = new PluginFinder(mockFile);
+		MockPluginFinder pluginFinder = new MockPluginFinder();
 		Tools tools = new Tools(pluginFinder);
 
-		assertFalse(tools.plugins.isEmpty());
+		tools.updateOnAddition(null, pluginFinder.plugins);
+		
 		assertTrue(tools.plugins.containsKey("MockPlugin.class"));
-		assertTrue(pluginFinder.plugins.contains("MockPlugin.class"));
 
 		Set<String> deleted = new HashSet<String>();
 		deleted.add("MockPlugin.class");
@@ -38,25 +42,23 @@ public class ToolsTest extends PluginObserverTest {
 
 	// updateOnAddition is tested too when subscription is called
 	@Test
-	public void testAddition() {
-		PluginFinder emptyFinder = new PluginFinder(new MockEmptyFile());
-		PluginFinder finder = new PluginFinder(new MockFile());
-		Tools tools = new Tools(emptyFinder);
+	public void updateOnAdditionTest() {
+		MockPluginFinder finder = new MockPluginFinder();
+		Tools tools = new Tools(finder);
 
 		assertTrue(tools.plugins.isEmpty());
 
-		tools.subscribeAPluginFinder(finder);
+		tools.updateOnAddition(null, finder.plugins);
 
-		assertTrue(finder.isObservedBy(tools));
 		assertTrue(tools.plugins.containsKey("MockPlugin.class"));
 	}
 
 	@Test
 	public void pluginLabelTest() {
-		MockFile mockFile = new MockFile();
-		PluginFinder finder = new PluginFinder(mockFile);
+		MockPluginFinder finder = new MockPluginFinder();
 		Tools tools = new Tools(finder);
-
+		
+		tools.updateOnAddition(null, finder.plugins);
 		assertEquals("Mock plugin", tools.pluginLabel("MockPlugin.class"));
 	}
 

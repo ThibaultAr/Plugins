@@ -11,6 +11,8 @@ public class Tools extends PluginObserver {
 
 	public Tools(PluginFinder pluginFinder) {
 		super(pluginFinder);
+		if (this.plugins == null)
+			this.plugins = new HashMap<String, Plugin>();
 	}
 
 	@Override

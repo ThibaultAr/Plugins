@@ -99,8 +99,4 @@ public class PluginFinder implements ActionListener {
 		Set<String> pluginsCopy = new HashSet<>(this.plugins);
 		observer.updateOnAddition(this.directory, pluginsCopy);
 	}
-
-	protected boolean isObservedBy(PluginObserver observer) {
-		return this.observers.contains(observer);
-	}
 }
