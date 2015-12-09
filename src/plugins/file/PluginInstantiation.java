@@ -41,6 +41,11 @@ public class PluginInstantiation {
 			return null;
 		} catch (IllegalAccessException e) {
 			return null;
+		} catch (ExceptionInInitializerError e) {
+			return null;
+		} catch (NoClassDefFoundError e) {
+			// if the name files is different of the class name that it contains
+			return null;
 		}
 	}
 
