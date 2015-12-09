@@ -12,9 +12,6 @@ public class PluginInstantiation {
 
 	protected static Class<Plugin> pluginInterface = plugins.Plugin.class;
 
-	private PluginInstantiation() {
-	}
-
 	/**
 	 * TODO comment
 	 * 

@@ -14,14 +14,19 @@ import javax.swing.JTextArea;
 import plugins.file.PluginFinder;
 import plugins.file.Tools;
 
-public class Window {
+public class PluginFrame extends JFrame {
 
-	protected JFrame window;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1108302002388167877L;
+
 	protected JMenuBar menuBar;
 	protected JTextArea textArea;
 	protected JMenu toolsMenu;
 
-	public Window(String toolsDirectory) {
+	public PluginFrame(String toolsDirectory) {
+		super("Extendable Editor");
 		JPanel content = this.createContentJPanel(toolsDirectory);
 		this.configureWindow(content);
 	}
@@ -68,12 +73,11 @@ public class Window {
 	}
 
 	protected void configureWindow(JPanel content) {
-		this.window = new JFrame("Extendable Editor");
-		this.window.setLocation(0, 0);
-		this.window.addWindowListener(new CloseWindowEvent());
-		this.window.setContentPane(content);
-		this.window.setVisible(true);
-		this.window.pack();
+		this.setLocation(0, 0);
+		this.addWindowListener(new CloseWindowEvent());
+		this.setContentPane(content);
+		this.setVisible(true);
+		this.pack();
 	}
 
 	/*
@@ -84,9 +88,5 @@ public class Window {
 		public void windowClosing(java.awt.event.WindowEvent e) {
 			System.exit(0);
 		}
-	}
-
-	public static void main(String[] args) {
-		new Window("dropins/plugins");
 	}
 }
