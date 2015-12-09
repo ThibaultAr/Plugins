@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ *	Tools is an observer in charge of watching the plugins available from the tools menu and add or delete them 
+ */
 public class Tools extends PluginObserver {
 
 	protected Map<String, Plugin> plugins;
@@ -39,11 +42,24 @@ public class Tools extends PluginObserver {
 		return this.plugins.keySet();
 	}
 
+	/**
+	 * 
+	 * @param pluginFile
+	 * @param text
+	 * 		inside the text area
+	 * @return
+	 * 		the text transformed by the plugin
+	 */
 	public String invokePluginTansformMethod(String pluginFile, String text) {
 		Plugin plugin = this.plugins.get(pluginFile);
 		return plugin.transform(text);
 	}
 
+	/**
+	 * 
+	 * @return
+	 * 		the label of the plugin
+	 */
 	public String pluginLabel(String pluginFile) {
 		Plugin plugin = this.plugins.get(pluginFile);
 		return plugin.getLabel();
