@@ -1,10 +1,10 @@
-package mocks;
+package plugins.file;
 
 import java.io.File;
 import java.util.Set;
 
-import plugins.PluginFinder;
-import plugins.PluginObserver;
+import plugins.file.PluginFinder;
+import plugins.file.PluginObserver;
 
 public class MockPluginObserver extends PluginObserver {
 

@@ -1,7 +1,9 @@
-package plugins;
+package plugins.file;
 
 import java.io.File;
 import java.io.FilenameFilter;
+
+import plugins.Plugin;
 
 /**
  * Filename filter which selects the plugins. A plugin ends with '.class'.

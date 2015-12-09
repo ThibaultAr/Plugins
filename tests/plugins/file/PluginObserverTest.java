@@ -1,11 +1,12 @@
-package plugins;
+package plugins.file;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import mocks.MockPluginFinder;
+import plugins.file.PluginFinder;
+import plugins.file.PluginObserver;
 
 public abstract class PluginObserverTest {
 	

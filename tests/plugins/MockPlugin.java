@@ -1,4 +1,4 @@
-package mocks;
+package plugins;
 
 import plugins.Plugin;
 

@@ -1,9 +1,9 @@
-package mocks;
+package plugins.file;
 
 import java.awt.event.ActionEvent;
 
-import plugins.PluginFinder;
-import plugins.PluginObserver;
+import plugins.file.PluginFinder;
+import plugins.file.PluginObserver;
 
 public class MockPluginFinder extends PluginFinder{
 

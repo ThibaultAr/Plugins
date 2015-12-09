@@ -1,9 +1,11 @@
-package plugins;
+package plugins.file;
 
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+
+import plugins.Plugin;
 
 /**
  *	Tools is an observer in charge of watching the plugins available from the tools menu and add or delete them 

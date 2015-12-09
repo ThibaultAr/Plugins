@@ -1,4 +1,4 @@
-package graphics;
+package plugins.editor;
 
 import java.util.Set;
 
@@ -8,7 +8,7 @@ import javax.swing.JTextArea;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
-import plugins.Tools;
+import plugins.file.Tools;
 
 public class ToolsMenu extends JMenu implements MenuListener {
 	/**

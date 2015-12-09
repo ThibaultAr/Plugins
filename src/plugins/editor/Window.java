@@ -1,4 +1,4 @@
-package graphics;
+package plugins.editor;
 
 import java.awt.BorderLayout;
 import java.awt.event.WindowAdapter;
@@ -11,8 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import plugins.PluginFinder;
-import plugins.Tools;
+import plugins.file.PluginFinder;
+import plugins.file.Tools;
 
 public class Window {
 

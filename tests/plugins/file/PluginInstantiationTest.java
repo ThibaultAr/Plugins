@@ -1,9 +1,11 @@
-package plugins;
+package plugins.file;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
+
+import plugins.file.PluginInstantiation;
 
 public class PluginInstantiationTest {
 

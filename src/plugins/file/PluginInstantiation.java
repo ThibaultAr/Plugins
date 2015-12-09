@@ -1,6 +1,8 @@
-package plugins;
+package plugins.file;
 
 import java.io.File;
+
+import plugins.Plugin;
 
 /**
  * 

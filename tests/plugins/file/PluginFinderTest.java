@@ -1,4 +1,4 @@
-package plugins;
+package plugins.file;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -8,8 +8,8 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-import mocks.MockFile;
-import mocks.MockPluginObserver;
+import plugins.file.PluginFinder;
+import plugins.file.PluginObserver;
 
 public class PluginFinderTest {
 

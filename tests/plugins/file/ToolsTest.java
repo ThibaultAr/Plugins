@@ -1,4 +1,4 @@
-package plugins;
+package plugins.file;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -9,7 +9,9 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import mocks.MockPluginFinder;
+import plugins.file.PluginFinder;
+import plugins.file.PluginObserver;
+import plugins.file.Tools;
 
 public class ToolsTest extends PluginObserverTest {
 
