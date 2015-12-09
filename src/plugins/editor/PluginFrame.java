@@ -7,7 +7,6 @@ import java.io.File;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
@@ -17,7 +16,8 @@ import plugins.file.Tools;
 public class PluginFrame extends JFrame {
 
 	/**
-	 * 
+	 * Class version, it is used to check if the server and client have the same
+	 * version of this class
 	 */
 	private static final long serialVersionUID = -1108302002388167877L;
 
@@ -27,20 +27,18 @@ public class PluginFrame extends JFrame {
 
 	public PluginFrame(String toolsDirectory) {
 		super("Extendable Editor");
-		JPanel content = this.createContentJPanel(toolsDirectory);
-		this.configureWindow(content);
+		this.createContentJPanel(toolsDirectory);
+		this.configureWindow();
 	}
 
-	protected JPanel createContentJPanel(String toolsDirectory) {
+	protected void createContentJPanel(String toolsDirectory) {
 		JScrollPane textAreaScrollPane = this.createTextAreaAndScroll();
 
 		this.createMenusToMenuBar(toolsDirectory);
 
-		JPanel content = new JPanel();
-		content.setLayout(new BorderLayout());
-		content.add(this.menuBar, BorderLayout.NORTH);
-		content.add(textAreaScrollPane, BorderLayout.CENTER);
-		return content;
+		this.setLayout(new BorderLayout());
+		this.setJMenuBar(this.menuBar);
+		this.add(textAreaScrollPane, BorderLayout.CENTER);
 	}
 
 	/**
@@ -72,10 +70,9 @@ public class PluginFrame extends JFrame {
 		this.toolsMenu = new ToolsMenu(tools, this.textArea);
 	}
 
-	protected void configureWindow(JPanel content) {
+	protected void configureWindow() {
 		this.setLocation(0, 0);
 		this.addWindowListener(new CloseWindowEvent());
-		this.setContentPane(content);
 		this.setVisible(true);
 		this.pack();
 	}
