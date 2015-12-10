@@ -8,7 +8,8 @@ import java.util.Set;
 import plugins.Plugin;
 
 /**
- *	Tools is an observer in charge of watching the plugins available from the tools menu and add or delete them 
+ * Tools is an observer in charge of watching the plugins available from the
+ * tools menu and add or delete them
  */
 public class Tools extends PluginObserver {
 
@@ -48,9 +49,8 @@ public class Tools extends PluginObserver {
 	 * 
 	 * @param pluginFile
 	 * @param text
-	 * 		inside the text area
-	 * @return
-	 * 		the text transformed by the plugin
+	 *            inside the text area
+	 * @return the text transformed by the plugin
 	 */
 	public String invokePluginTansformMethod(String pluginFile, String text) {
 		Plugin plugin = this.plugins.get(pluginFile);
@@ -59,8 +59,7 @@ public class Tools extends PluginObserver {
 
 	/**
 	 * 
-	 * @return
-	 * 		the label of the plugin
+	 * @return the label of the plugin
 	 */
 	public String pluginLabel(String pluginFile) {
 		Plugin plugin = this.plugins.get(pluginFile);

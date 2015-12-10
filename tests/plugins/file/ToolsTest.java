@@ -21,7 +21,7 @@ public class ToolsTest extends PluginObserverTest {
 		Tools tools = new Tools(pluginFinder);
 
 		tools.updateOnAddition(null, pluginFinder.plugins);
-		
+
 		String transform = tools.invokePluginTansformMethod("MockPlugin.class", "blabla");
 		assertEquals("Mock plugin", transform);
 	}
@@ -32,7 +32,7 @@ public class ToolsTest extends PluginObserverTest {
 		Tools tools = new Tools(pluginFinder);
 
 		tools.updateOnAddition(null, pluginFinder.plugins);
-		
+
 		assertTrue(tools.plugins.containsKey("MockPlugin.class"));
 
 		Set<String> deleted = new HashSet<String>();
@@ -59,7 +59,7 @@ public class ToolsTest extends PluginObserverTest {
 	public void pluginLabelTest() {
 		MockPluginFinder finder = new MockPluginFinder();
 		Tools tools = new Tools(finder);
-		
+
 		tools.updateOnAddition(null, finder.plugins);
 		assertEquals("Mock plugin", tools.pluginLabel("MockPlugin.class"));
 	}

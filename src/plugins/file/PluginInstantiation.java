@@ -5,8 +5,8 @@ import java.io.File;
 import plugins.Plugin;
 
 /**
- * PluginInstantiation only contains static methods.
- * Serves to instantiate a plugin with its name.
+ * PluginInstantiation only contains static methods. Serves to instantiate a
+ * plugin with its name.
  *
  */
 public class PluginInstantiation {

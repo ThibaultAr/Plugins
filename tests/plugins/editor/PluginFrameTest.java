@@ -8,7 +8,7 @@ import javax.swing.JMenuBar;
 import org.junit.Test;
 
 public class PluginFrameTest {
-	
+
 	@Test
 	public void jMenuBarTest() {
 		PluginFrame pluginFrame = new PluginFrame("");
