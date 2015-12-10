@@ -6,7 +6,7 @@ import plugins.Plugin;
 
 /**
  * PluginInstantiation only contains static methods.
- * Serves to instantiate a plugin with is name.
+ * Serves to instantiate a plugin with its name.
  *
  */
 public class PluginInstantiation {
@@ -14,7 +14,7 @@ public class PluginInstantiation {
 	protected static Class<Plugin> pluginInterface = plugins.Plugin.class;
 
 	/**
-	 * Returns a instance of the plugin whose name is passed as a parameter
+	 * Returns an instance of the plugin whose name is passed as a parameter
 	 * 
 	 * @param dir
 	 * @param name
@@ -50,7 +50,7 @@ public class PluginInstantiation {
 	/**
 	 * @param name
 	 *            a file name
-	 * @return true if the file have an extension .class, else false
+	 * @return true if the file has an extension .class, else false
 	 */
 	private static boolean isClass(String name) {
 		return name.endsWith(".class");

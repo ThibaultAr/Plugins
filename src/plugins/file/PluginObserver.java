@@ -14,7 +14,7 @@ public abstract class PluginObserver {
 	 * constructs a plugin observer
 	 * 
 	 * @param pluginFinder
-	 *            used to determinates which files are plugin
+	 *            used to determinates which files are plugins
 	 */
 	public PluginObserver(PluginFinder pluginFinder) {
 		this.subscribeAPluginFinder(pluginFinder);
